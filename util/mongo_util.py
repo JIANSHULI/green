@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import pymongo
-import randid
+#import randid
 import datetime
+import random
 
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
 class MongoUtil:
     def __init__(self, db_ip='localhost', db_name='wx'):
@@ -23,7 +25,7 @@ class MongoUtil:
 
     @staticmethod
     def make_id(openid):
-        return randid.randid(4) + openid[-4:]
+        return self.randid(4) + openid[-4:]
 
     def upsert_user(self, openid):
         user = {'openid': openid, 'time': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
@@ -58,4 +60,11 @@ class MongoUtil:
             for host in hosts:
                 results.append(host)
             return results
+    
+    def randid(length):
+        result = ''
+        for i in range(length):
+            idx = random.randint(0, len(alphabet)-1)
+            result += alphabet[idx]
+        return result
 

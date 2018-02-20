@@ -1,7 +1,5 @@
 import random
 
-alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-
 
 def randid(length):
     result = ''
@@ -9,3 +7,4 @@ def randid(length):
         idx = random.randint(0, len(alphabet)-1)
         result += alphabet[idx]
     return result
+

@@ -11,7 +11,7 @@ class WX(tornado.web.RequestHandler):
         try:
             wechat.parse_data(body)
         except ParseError:
-            print '[ERROR] Parse message failed.'
+            print ('[ERROR] Parse message failed.')
             return
         id = wechat.message.id          # MsgId
         target = wechat.message.target  # ToUserName
@@ -124,5 +124,5 @@ class WX(tornado.web.RequestHandler):
                 result = self.wx_proc_msg(body)
                 if result is not None:
                     self.write(result)
-            except IOError, e:
+            except IOError as e:
                 return
