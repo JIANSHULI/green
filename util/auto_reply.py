@@ -40,7 +40,7 @@ class GoogleVision_AutoReply:
                     "image":{
                         "source":{
                             "imageUri":
-                                picurl
+                                picture_url
                         }
                     },
                      "features": [
