@@ -144,7 +144,7 @@ class WechatBasic(WechatBase):
         :raises ParseError: 解析微信服务器数据错误, 数据不合法
         """
         result = {}
-        if type(data) not in [str, unicode]:
+        if type(data) not in [str]: #unicode for python2.7
             raise ParseError()
 
         data = data.encode('utf-8')
