@@ -12,5 +12,10 @@
 	"tuling_key": "a98151f5b12a43e88488f71895a195a7",
     "tuling_url": "http://www.tuling123.com/openapi/api",
 
+	"google_vision": "yes",
+	"google_vis_key": "AIzaSyANGVE1gWK-_PKq7tnp4eKmF1aGkVyjpKk",
+	"google_vis_url": "https://vision.googleapis.com/v1/images:annotate",
+
     "type": "subscribe"
 }
+

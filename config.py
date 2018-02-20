@@ -33,6 +33,10 @@ auto_reply_mode = False  # 是否自动回复
 tuling_url = None  # 图灵机器人请求url
 tuling_key = None  # 图灵机器人API KEY
 
+auto_vision_analysis_mode = False # 是否启动Google图像分析
+google_vis_url = None # Google Vision API endpoint url
+google_vis_key = None # Google Vision API key
+
 account_type = "subscribe"
 
 with open("conf.json") as f:
@@ -58,6 +62,12 @@ with open("conf.json") as f:
         auto_reply_mode = True if js['auto_reply'] == 'yes' else False
     if 'type' in js:
         account_type = js['type']
+    if 'google_vis_url' in js:
+        google_vis_url = js['google_vis_url']
+    if 'google_vis_key' in js:
+        google_vis_key = js['google_vis_key']
+    if 'google_vision' in js:
+        auto_vision_analysis_mode = True if js['google_vision'] == 'yes' else False
 
 if mongo_db_name is None:
     mongo_db_name = 'green'
@@ -69,6 +79,13 @@ if auto_reply_mode and tuling_key is not None and tuling_url is not None:
     auto_reply = TulingAutoReply(tuling_key, tuling_url)  # tuling reply
 else:
     auto_reply = DefaultAutoReply()  # reply none
+    
+google_vision_analysis = None
+if google_vision_analysis_mode and google_vis_key is not None and google_vis_url is not None:
+    google_vision_analysis = GoogleVision_AutoReply(google_vis_key=google_vis_key, google_vis_url=google_vis_url)
+else:
+    google_vision_analysis = DefaultAutoReply() # Reply None
+
 
 mongo = MongoUtil(db_ip='localhost', db_name=mongo_db_name)
 

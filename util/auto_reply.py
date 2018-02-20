@@ -28,6 +28,58 @@ class TulingAutoReply:
             traceback.print_exc()
             return None
 
+class GoogleVision_AutoReply:
+    def __init__(self, google_vis_key, google_vis_url):
+        self.key = google_vis_key
+        self.url = google_vis_key
+        
+    def analyse(self, picture_url, picture_mediaID):
+        parameters_pic_raw = {
+            "requests":[
+                {
+                    "image":{
+                        "source":{
+                            "imageUri":
+                                picurl
+                        }
+                    },
+                     "features": [
+                            {
+                                "type": "FACE_DETECTION",
+                                "maxResults": "10"
+                            },
+                            {
+                                "type": "LABEL_DETECTION",
+                                 "maxResults": "10"
+                            },
+                            {
+                                "type": "TEXT_DETECTION",
+                                "maxResults": "10"
+                            },
+                            {
+                                "type": "LANDMARK_DETECTION",
+                                "maxResults": "10"
+                            },
+                            {
+                                "type": "WEB_DETECTION",
+                                "maxResults": "10"
+                            }
+                     ]
+                }
+            ]
+        }
+        
+        output_filename = 'vision_%s.json'%picture_mediaID
+        with open(output_filename, 'w') as output_file:
+            json.dump(parameters_pic_raw, output_file, indent = 4)
+        
+        parameters_pic = open(output_filename,'rb').read()
+        response_pic = requests.post(url = self.url + '?key=' + self.key, data = parameters_pic)
+        
+        vision_results = response_pic.json()
+        
+        return vision_results
+
 
 class DefaultAutoReply:
     def __init__(self):
