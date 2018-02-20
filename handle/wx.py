@@ -77,10 +77,10 @@ class WX(tornado.web.RequestHandler):
                     
                     #return wechat.response_text(content=vision_results_text), wechat.response_text(content=vision_results_label), wechat.response_text(content=vision_results_simurl), wechat.response_text(content=vistion_results_face), wechat.response_text(content=vision_results_landmark)
                     
-                return wechat.response_text(content='突然有事儿，下次吧...')
+                return wechat.response_text(content=u'突然有事儿，下次吧...')
                 
             else:
-                return wechat.response_text(content='这次不大行了，下次吧...')
+                return wechat.response_text(content=u'这次不大行了，下次吧...')
                     
             
             
