@@ -34,7 +34,7 @@ class WX(tornado.web.RequestHandler):
             picurl = wechat.message.picurl                     # PicUrl
             media_id = wechat.message.media_id                 # MediaId
             
-            wechat.response_text(content=('尝试图片分析' + vision_results_text))
+            wechat.response_text(content='尝试做下图片分析~')
             
             vision_results = google_vision_analysis.analyse(picture_url=picurl, picture_mediaID=media_id)
             if vision_results is not None:
@@ -77,10 +77,10 @@ class WX(tornado.web.RequestHandler):
                     
                     #return wechat.response_text(content=vision_results_text), wechat.response_text(content=vision_results_label), wechat.response_text(content=vision_results_simurl), wechat.response_text(content=vistion_results_face), wechat.response_text(content=vision_results_landmark)
                     
-                return
+                return wechat.response_text(content='突然有事儿，下次吧...')
                 
             else:
-                return wechat.response_none()
+                return wechat.response_text(content='这次不大行了，下次吧...')
                     
             
             
