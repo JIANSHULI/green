@@ -34,7 +34,7 @@ class WX(tornado.web.RequestHandler):
             picurl = wechat.message.picurl                     # PicUrl
             media_id = wechat.message.media_id                 # MediaId
             
-            return wechat.response_text(content=u'%s'picurl)
+            return wechat.response_text(content=u'%s'%picurl)
             wechat.response_text(content=u'尝试做下图片分析~')
             
             vision_results = google_vision_analysis.analyse(picture_url=picurl, picture_mediaID=media_id)
