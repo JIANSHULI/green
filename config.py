@@ -67,7 +67,7 @@ with open("conf.json") as f:
     if 'google_vis_key' in js:
         google_vis_key = js['google_vis_key']
     if 'google_vision' in js:
-        auto_vision_analysis_mode = True if js['google_vision'] == 'yes' else False
+        google_vision_analysis_mode = True if js['google_vision'] == 'yes' else False
 
 if mongo_db_name is None:
     mongo_db_name = 'green'
