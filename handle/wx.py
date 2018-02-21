@@ -35,11 +35,11 @@ class WX(tornado.web.RequestHandler):
             media_id = wechat.message.media_id                 # MediaId
             msg_id = wechat.message.msg_id                     # MsgId
             create_time = wechat.message.create_time           # CreateTime 
-            wechat.response_text(content=u'%s'%picurl)
+#            wechat.response_text(content=u'%s'%picurl)
 #            wechat.response_text(content=u'尝试做下图片分析~')
             
             vision_results = google_vision_analysis.analyse(picture_url=picurl, picture_mediaID=media_id, picture_msgID=msg_id, picture_createtime=create_time)
-            print ('vis_results: ' + str(vision_results))
+            #print ('vis_results: ' + str(vision_results))
             if vision_results is not None:
                 
                 vision_results_text = 'text'
@@ -50,7 +50,7 @@ class WX(tornado.web.RequestHandler):
                 
                 try:
                     vision_results_text = ('分析师A：\n 图片文字：' + vision_results['responses'][0]['textAnnotations'][0]['description'])
-                    #print(vision_result_text)
+                    print(vision_result_text)
 #                    wechat.response_text(content=vision_results_text)
                     vision_results_label = ('分析师A：\n 图片内容分析：' + str([vision_results['responses'][0]['labelAnnotations'][index]['description'] for index in range(len(vision_results['responses'][0]['labelAnnotations']))])[1:-1])
                     print(vision_results_label)
@@ -67,7 +67,7 @@ class WX(tornado.web.RequestHandler):
                     vision_results_landmark = ('分析师A：\n 地标分析：' + str([(vision_results['responses'][0]['landmarkAnnotations'][index]['description'], vision_results['responses'][0]['landmarkAnnotations'][index]['locations']) for index in range(len(vision_results['responses'][0]['landmarkAnnotations']))])[1:-1])
                     print(vision_results_landmark)
                     
-                    return wechat.response_text(content=vision_results_text), wechat.response_text(content=vision_results_label), wechat.response_text(content=vision_results_simurl), wechat.response_text(content=vistion_results_face), wechat.response_text(content=vision_results_landmark)
+                    return wechat.response_text(content=(vision_results_text + '\n' + vision_results_label + '\n' + vision_results_simurl + '\n' + vistion_results_face + '\n' + vision_results_landmark + '\n')) #, wechat.response_text(content=vision_results_label), wechat.response_text(content=vision_results_simurl), wechat.response_text(content=vistion_results_face), wechat.response_text(content=vision_results_landmark)
                     
                 except:
                     return wechat.response_text(content=u'突然有事儿，下次吧...')
