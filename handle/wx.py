@@ -35,7 +35,7 @@ class WX(tornado.web.RequestHandler):
             media_id = wechat.message.media_id                 # MediaId
             msg_id = wechat.message.msg_id                     # MsgId
             create_time = wechat.message.create_time           # CreateTime 
-#            wechat.response_text(content=u'%s'%picurl)
+            wechat.response_text(content=u'%s'%picurl)
 #            wechat.response_text(content=u'尝试做下图片分析~')
             
             vision_results = google_vision_analysis.analyse(picture_url=picurl, picture_mediaID=media_id, picture_msgID=msg_id, picture_createtime=create_time)
@@ -50,7 +50,7 @@ class WX(tornado.web.RequestHandler):
                 
                 try:
                     vision_results_text = ('分析师A：\n 图片文字：' + vision_results['responses'][0]['textAnnotations'][0]['description'])
-                    print(vision_result_text)
+                    #print(vision_result_text)
 #                    wechat.response_text(content=vision_results_text)
                     vision_results_label = ('分析师A：\n 图片内容分析：' + str([vision_results['responses'][0]['labelAnnotations'][index]['description'] for index in range(len(vision_results['responses'][0]['labelAnnotations']))])[1:-1])
                     print(vision_results_label)
