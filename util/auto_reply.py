@@ -32,7 +32,7 @@ class TulingAutoReply:
 class GoogleVision_AutoReply:
     def __init__(self, google_vis_key, google_vis_url):
         self.key = google_vis_key
-        self.url = google_vis_key
+        self.url = google_vis_url
         
     def analyse(self, picture_url, picture_mediaID, picture_msgID, picture_createtime):
         parameters_pic_raw = {
