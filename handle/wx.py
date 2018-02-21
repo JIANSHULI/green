@@ -87,7 +87,7 @@ class WX(tornado.web.RequestHandler):
                 except:
                     pass
                 
-                return wechat.response_text(content=(vision_results_text + '\n' + vision_results_label + '\n' + vision_results_simurl + '\n' + vistion_results_face + '\n' + vision_results_landmark + '\n')) #, wechat.response_text(content=vision_results_label), wechat.response_text(content=vision_results_simurl), wechat.response_text(content=vistion_results_face), wechat.response_text(content=vision_results_landmark)
+                return wechat.response_text(content=(vision_results_text + '\n' + vision_results_label + '\n' + vision_results_simurl + '\n' + vision_results_face + '\n' + vision_results_landmark + '\n')) #, wechat.response_text(content=vision_results_label), wechat.response_text(content=vision_results_simurl), wechat.response_text(content=vistion_results_face), wechat.response_text(content=vision_results_landmark)
                     
 #                except:
 #                    return wechat.response_text(content=u'突然有事儿，下次吧...')
