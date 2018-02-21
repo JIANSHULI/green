@@ -84,7 +84,7 @@ class GoogleVision_AutoReply:
         print('google key: '+self.key)
         print('google url: '+self.url)
         response_pic = requests.post(url = self.url + '?key=' + self.key, data = parameters_pic)
-        print ('response_pic_info: ' + np.info(response_pic))
+        print ('response_pic_info: ' + str(np.info(response_pic)))
         
         vision_results = response_pic.json()
         print ('vision_results: ' + vision_results)
