@@ -35,6 +35,8 @@ class ImageMessage(WechatMessage):
         try:
             self.picurl = message.pop('PicUrl')
             self.media_id = message.pop('MediaId')
+            self.msg_id = message.pop('MsgId')
+            self.create_time = message.pop('CreateTime')
         except KeyError:
             raise ParseError()
         super(ImageMessage, self).__init__(message)

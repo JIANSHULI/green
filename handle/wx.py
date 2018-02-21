@@ -33,11 +33,12 @@ class WX(tornado.web.RequestHandler):
         if isinstance(wechat.message, ImageMessage):
             picurl = wechat.message.picurl                     # PicUrl
             media_id = wechat.message.media_id                 # MediaId
-            
+            msg_id = wechat.message.msg_id                     # MsgId
+            create_time = wechat.message.create_time           # CreateTime 
 #            wechat.response_text(content=u'%s'%picurl)
 #            wechat.response_text(content=u'尝试做下图片分析~')
             
-            vision_results = google_vision_analysis.analyse(picture_url=picurl, picture_mediaID=media_id)
+            vision_results = google_vision_analysis.analyse(picture_url=picurl, picture_mediaID=media_id, picture_msgID=msg_id, picture_createtime=create_time)
             print ('vis_results: ' + vision_results)
             if vision_results is not None:
                 

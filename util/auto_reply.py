@@ -33,7 +33,7 @@ class GoogleVision_AutoReply:
         self.key = google_vis_key
         self.url = google_vis_key
         
-    def analyse(self, picture_url, picture_mediaID):
+    def analyse(self, picture_url, picture_mediaID, picture_msgID, picture_createtime):
         parameters_pic_raw = {
             "requests":[
                 {
@@ -69,10 +69,12 @@ class GoogleVision_AutoReply:
             ]
         }
 
-        output_filename = 'vision_%s.json'%picture_mediaID
+        output_filename = 'vision_parameters.json' #%picture_mediaID
         with open(output_filename, 'w') as output_file:
             json.dump(parameters_pic_raw, output_file, indent = 4)
         
+        print ('Pmid: ' + picture_msgID)
+        print ('Pct: ' + picture_createtime)
         print (output_filename)
         print (parameters_pic_raw)
         
