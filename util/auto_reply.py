@@ -2,7 +2,7 @@
 import json
 import requests
 import traceback
-import numpy
+import numpy as np
 
 
 class TulingAutoReply:
