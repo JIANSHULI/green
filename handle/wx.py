@@ -64,7 +64,7 @@ class WX(tornado.web.RequestHandler):
                 except:
                     pass
                     
-                try
+                try:
                     vision_results_simurl = ('分析师A：\n 联想图片：' + str(vision_results['responses'][0]['webDetection']['bestGuessLabels'][0]['label'])+ ', ' + str([vision_results['responses'][0]['webDetection']['visuallySimilarImages'][ind]['url'] for ind in range(len(vision_results['responses'][0]['webDetection']['visuallySimilarImages']))])[1:-1])
                     print(vision_results_simurl)
                 except:
