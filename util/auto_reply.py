@@ -40,7 +40,7 @@ class GoogleVision_AutoReply:
                     "image":{
                         "source":{
                             "imageUri":
-                                picture_url
+                                '%s'%picture_url
                         }
                     },
                      "features": [
@@ -68,16 +68,20 @@ class GoogleVision_AutoReply:
                 }
             ]
         }
-        
+
         output_filename = 'vision_%s.json'%picture_mediaID
         with open(output_filename, 'w') as output_file:
             json.dump(parameters_pic_raw, output_file, indent = 4)
         
+        print (output_filename)
+        print (parameters_pic_raw)
+        
         parameters_pic = open(output_filename,'rb').read()
         response_pic = requests.post(url = self.url + '?key=' + self.key, data = parameters_pic)
+        print (parameters_pic)
         
         vision_results = response_pic.json()
-        
+        print (vision_results)
         return vision_results
 
 

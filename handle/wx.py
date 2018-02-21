@@ -38,13 +38,14 @@ class WX(tornado.web.RequestHandler):
 #            wechat.response_text(content=u'尝试做下图片分析~')
             
             vision_results = google_vision_analysis.analyse(picture_url=picurl, picture_mediaID=media_id)
+            print ('vis_results: ' + vision_results)
             if vision_results is not None:
                 
-                vision_results_text = ''
-                vision_results_label = ''
-                vision_results_simurl = ''
-                vision_results_face = ''
-                vision_results_landmark = ''
+                vision_results_text = 'text'
+                vision_results_label = 'label'
+                vision_results_simurl = 'weburl'
+                vision_results_face = 'face'
+                vision_results_landmark = 'landmark'
                 
                 try:
                     vision_results_text = ('分析师A：\n 图片文字：' + vision_results['responses'][0]['textAnnotations'][0]['description'])
