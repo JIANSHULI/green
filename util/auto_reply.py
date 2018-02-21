@@ -87,7 +87,7 @@ class GoogleVision_AutoReply:
         print ('response_pic_info: ' + str(np.info(response_pic)))
         
         vision_results = response_pic.json()
-        print ('vision_results: ' + vision_results)
+        print ('vision_results: ' + str(vision_results))
         return vision_results
 
 
