@@ -77,11 +77,12 @@ class GoogleVision_AutoReply:
         print (parameters_pic_raw)
         
         parameters_pic = open(output_filename,'rb').read()
+        print ('parameters_pic: ' + parameters_pic)
         response_pic = requests.post(url = self.url + '?key=' + self.key, data = parameters_pic)
-        print (parameters_pic)
+        print ('response_pic: ' + response_pic)
         
         vision_results = response_pic.json()
-        print (vision_results)
+        print ('vision_results: ' + vision_results)
         return vision_results
 
 
